@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">TestApp</string>
+    <string name="hint_search">Search by Book name, author, publisher etc.</string>
+
 </resources>
