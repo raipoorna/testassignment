@@ -6,38 +6,12 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay">
-
-
-            <ImageButton
-                android:id="@+id/imgbtn_calendar"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="end"
-                android:background="@null"
-                android:padding="15dp"
-                android:src="@android:drawable/ic_menu_my_calendar"
-                android:visibility="visible" />
-        </androidx.appcompat.widget.Toolbar>
-    </com.google.android.material.appbar.AppBarLayout>
-
     <androidx.appcompat.widget.SearchView
         android:id="@+id/edit_search"
         android:layout_width="match_parent"
         android:layout_height="40dp"
-        android:layout_margin="10dp"
         android:layout_below="@+id/app_bar_layout"
+        android:layout_margin="10dp"
         android:background="@drawable/ic_baseline_rounded_corner"
         android:maxLines="1"
         android:singleLine="true"
@@ -46,13 +20,6 @@
         app:searchIcon="@drawable/ic_search"
         app:theme="@style/AppSearchView" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_book"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/edit_search"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
-
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar"
         style="?android:attr/progressBarStyleLarge"
@@ -60,6 +27,31 @@
         android:layout_height="48dp"
         android:layout_centerInParent="true"
         android:visibility="gone" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_book"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/edit_search"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <ImageButton
+            android:id="@+id/imgbtn_calendar"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:background="@null"
+            android:padding="15dp"
+            android:src="@android:drawable/ic_menu_my_calendar"
+            android:visibility="visible" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
 
 </RelativeLayout>

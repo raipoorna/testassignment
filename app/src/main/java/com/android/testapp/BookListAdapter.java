@@ -29,11 +29,11 @@ class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewH
     public void onBindViewHolder(@NonNull BookListViewHolder viewHolder, int position) {
         Book book = mBookList.get(position);
 
-        viewHolder.title.setText(book.getTitle());
-        viewHolder.author.setText(book.getAuthor());
-        viewHolder.publisher.setText(book.getPublisher());
-        viewHolder.contributor.setText(book.getContributor());
-        viewHolder.description.setText(book.getDescription());
+        viewHolder.title.setText("Title: "+book.getTitle());
+        viewHolder.author.setText("Author: "+book.getAuthor());
+        viewHolder.publisher.setText("Publisher: "+book.getPublisher());
+        viewHolder.contributor.setText("Contributor: "+book.getContributor());
+        viewHolder.description.setText("Description: "+book.getDescription());
     }
 
     @Override
