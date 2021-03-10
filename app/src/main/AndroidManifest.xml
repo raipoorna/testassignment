@@ -7,12 +7,14 @@
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.TestApp">
+        android:theme="@style/AppTheme">
+
         <activity android:name=".MainActivity"
-            android:theme="@style/Theme.TestApp.NoActionBar">
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="stateHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,7 +24,7 @@
 
         <service
             android:name=".BookHandlerIntentService"
-            android:exported="false"></service>
+            android:exported="false" />
     </application>
 
 </manifest>

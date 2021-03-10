@@ -1,5 +1,8 @@
 <resources>
     <string name="app_name">TestApp</string>
-    <string name="hint_search">Search by Book name, author, publisher etc.</string>
+    <string name="hint_search">Search by Book name, author etc.</string>
+    <string name="calendar">Calendar</string>
+    <string name="date_format">yyyy-MM-dd</string>
+    <string name="dialog_message">Do you wish to get all books published on and after %s?</string>
 
 </resources>
