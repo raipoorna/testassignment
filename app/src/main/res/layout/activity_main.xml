@@ -6,19 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/edit_search"
+    <LinearLayout
+        android:id="@+id/search_box"
         android:layout_width="match_parent"
-        android:layout_height="40dp"
-        android:layout_below="@+id/app_bar_layout"
-        android:layout_margin="10dp"
-        android:background="@drawable/ic_baseline_rounded_corner"
-        android:maxLines="1"
-        android:singleLine="true"
-        app:iconifiedByDefault="false"
-        app:queryHint="@string/hint_search"
-        app:searchIcon="@drawable/ic_search"
-        app:theme="@style/AppSearchView" />
+        android:layout_height="wrap_content"
+        android:background="@color/design_default_color_primary"
+        android:padding="8dp">
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/edit_search"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/search_bg"
+            android:maxLines="1"
+            android:singleLine="true"
+            android:textSize="12sp"
+            android:textColorPrimary="@color/black"
+            app:iconifiedByDefault="false"
+            app:queryHint="@string/hint_search"
+            app:searchIcon="@drawable/ic_search" />
+
+    </LinearLayout>
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress_bar"
@@ -32,26 +40,8 @@
         android:id="@+id/list_book"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/edit_search"
+        android:layout_below="@+id/search_box"
+        android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
-
-    <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/app_bar_layout"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:theme="@style/AppTheme.AppBarOverlay">
-
-        <ImageButton
-            android:id="@+id/imgbtn_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="end"
-            android:background="@null"
-            android:padding="15dp"
-            android:src="@android:drawable/ic_menu_my_calendar"
-            android:visibility="visible" />
-
-    </com.google.android.material.appbar.AppBarLayout>
-
 
 </RelativeLayout>

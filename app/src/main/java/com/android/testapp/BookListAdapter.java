@@ -16,10 +16,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewHolder> implements Filterable {
-    private ArrayList<Book> mBookList, mUnfilteredBookList;
+    private final ArrayList<Book> mBookList;
+    private final ArrayList<Book> mUnfilteredBookList;
 
     public BookListAdapter(ArrayList<Book> bookList) {
-        mUnfilteredBookList = bookList;
+        mUnfilteredBookList = new ArrayList<>();
 
         mBookList = bookList;
     }
@@ -56,7 +57,7 @@ class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewH
             protected FilterResults performFiltering(CharSequence charSequence) {
                 ArrayList<Book> filteredBookList = new ArrayList<>();
 
-                Log.v("TESTAPP", "Searching for: "+charSequence);
+                Log.v("TESTAPP", "Searching for: " + charSequence);
 
                 if (TextUtils.isEmpty(charSequence)) {
                     filteredBookList.addAll(mUnfilteredBookList);
@@ -70,7 +71,7 @@ class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewH
                                 book.getContributor().toLowerCase().contains(searchTerm) ||
                                 book.getDescription().toLowerCase().contains(searchTerm)) {
 
-                                filteredBookList.add(book);
+                            filteredBookList.add(book);
                         }
                     }
                 }
@@ -84,7 +85,7 @@ class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewH
             protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
                 ArrayList<Book> filteredBookList = (ArrayList<Book>) filterResults.values;
 
-                Log.v("TESTAPP", "Searching Results: "+filteredBookList.size());
+                Log.v("TESTAPP", "Searching Results: " + filteredBookList.size());
 
                 mBookList.clear();
                 mBookList.addAll(filteredBookList);
@@ -93,8 +94,11 @@ class BookListAdapter extends RecyclerView.Adapter<BookListAdapter.BookListViewH
         };
     }
 
+    void setBookList(ArrayList<Book> bookList){
+        mUnfilteredBookList.addAll(bookList);
+    }
 
-    class BookListViewHolder extends RecyclerView.ViewHolder {
+    static class BookListViewHolder extends RecyclerView.ViewHolder {
         protected TextView title;
         protected TextView author;
         protected TextView publisher;
