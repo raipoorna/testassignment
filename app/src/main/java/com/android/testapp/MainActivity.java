@@ -1,11 +1,13 @@
 package com.android.testapp;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.SearchView;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,7 +23,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     private BookListAdapter mBookListAdapter;
-    private List<Book> mBookList;
+    private ArrayList<Book> mBookList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +34,24 @@ public class MainActivity extends AppCompatActivity {
 
         RecyclerView listView = findViewById(R.id.list_book);
         listView.setAdapter(mBookListAdapter);
+
+        SearchManager searchManager = (SearchManager) getSystemService(Context.SEARCH_SERVICE);
+        SearchView searchView = findViewById(R.id.edit_search);
+        searchView.setSearchableInfo(searchManager.getSearchableInfo(getComponentName()));
+        searchView.setQueryHint(getResources().getString(R.string.hint_search));
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                mBookListAdapter.getFilter().filter(query);
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                mBookListAdapter.getFilter().filter(newText);
+                return false;
+            }
+        });
 
         LocalBroadcastManager.getInstance(this).registerReceiver(mLocalMessageReceiver,
                 new IntentFilter("api-response"));
